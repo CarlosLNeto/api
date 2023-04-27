@@ -1,6 +1,7 @@
 import { Body, Controller, Post } from "@nestjs/common";
 import { AuthLoginDTO } from "./dto/auth-login.dto";
 import { AuthRegisterDTO } from "./dto/auth-register.dto";
+import { AuthForgetDTO } from "./dto/auth-forget.dto";
 
 
 @Controller('auth')
@@ -13,6 +14,11 @@ export class AuthController {
 
     @Post('register')
     async register(@Body() body: AuthRegisterDTO){
+
+    }
+
+    @Post('forget')
+    async forget(@Body() body: AuthForgetDTO){
         
     }
 
