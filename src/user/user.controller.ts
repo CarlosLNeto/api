@@ -9,12 +9,12 @@ export class UserController {
   }
 
   @Get()
-  async read(){
+  async list(){
     return {user:[]};
   }
 
   @Get(':id')
-  async readOne(@Param() param){
-    return {users:{ }, param}
+  async readOne(@Param() params){
+    return {users:{ }, params}
   }
 }
