@@ -14,7 +14,7 @@ export class UserController {
   }
 
   @Get(':id')
-  async readOne(@Param() params){
+  async show(@Param() params){
     return {users:{ }, params}
   }
 }
