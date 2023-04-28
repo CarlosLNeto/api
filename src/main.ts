@@ -14,4 +14,8 @@ async function bootstrap() {
 }
 bootstrap();
 
-//teste
+<<<<<<< HEAD
+=======
+
+>>>>>>> 30d2b1c1c47904ca8f4f8cc356f0f34d794a814b
+//teste2
