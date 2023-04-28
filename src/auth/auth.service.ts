@@ -9,12 +9,16 @@ import { UserService } from "src/user/user.service";
 @Injectable()
 export class AuthService{
 
+
+    private issuer = "login";
+    private audience = "users";
+
     constructor(private readonly jwtService: JwtService,
          private readonly prisma: PrismaService,
          private readonly userService: UserService
                ) { }
 
-    async createToken(user: User){
+    createToken(user: User){
         return {
             acessToken: this.jwtService.sign({
                 id: user.id,
@@ -23,18 +27,18 @@ export class AuthService{
             },{
                 expiresIn: "1 day",
                 subject: String(user.id),
-                issuer: 'login',
-                audience: 'users'
+                issuer: this.issuer,
+                audience: this.audience
             })
         }
     }
 
-    async checkToken(token: string){
+    checkToken(token: string){
 
         try{
             const data = this.jwtService.verify(token, {
-                audience: 'users',
-                issuer: 'login',
+                audience: this.audience,
+                issuer: this.issuer
             });
             return data;
         } catch (e){
@@ -42,7 +46,7 @@ export class AuthService{
         }
     }
 
-    async isValidToken(token: string){
+    isValidToken(token: string){
         try{
             this.checkToken(token);
             return true;
