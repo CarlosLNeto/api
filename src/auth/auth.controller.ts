@@ -5,6 +5,7 @@ import { AuthForgetDTO } from "./dto/auth-forget.dto";
 import { AuthResetDTO } from "./dto/auth-reset.dto";
 import { UserService } from "src/user/user.service";
 import { AuthService } from "./auth.service";
+import { AuthMeDTO } from "./dto/auth-me.dto";
 
 
 @Controller('auth')
@@ -35,7 +36,7 @@ export class AuthController {
     }
 
     @Post('me')
-    async me(@Body() body){
+    async me(@Body() body: AuthMeDTO){
         return this.authService.checkToken(body.token);
     }
 
